@@ -1,0 +1,24 @@
+{
+  "name": "mmdl",
+  "version": "1.0.0",
+  "description": "Multi Media Downloader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IchBInHanz/mmdl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IchBInHanz/mmdl/issues"
+  },
+  "homepage": "https://github.com/IchBInHanz/mmdl#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "socket.io": "^4.5.2"
+  }
+}
