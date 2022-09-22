@@ -34,6 +34,7 @@ main {
     font-size: 1.6rem;
     color: var(--text);
     outline: none;
+    width: auto;
 }
 
 .search-container>button {
@@ -45,6 +46,7 @@ main {
     color: var(--text);
     outline: none;
     cursor: pointer;
+    width: auto;
 }
 
 .search-container>button:hover {
@@ -53,6 +55,50 @@ main {
 }
 
 #find-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-row-gap: 4vh;
     padding-top: 4vh;
     font-size: 1.6rem;
+}
+
+#find-container>div {
+    padding-bottom: 20px;
+    border-radius: 10px;
+    width: 18vw;
+    border: 5px solid var(--the);
+    cursor: pointer;
+}
+
+#find-container>div>img {
+    border-radius: 6px;
+    width: 100%;
+}
+
+#find-container>div>h5 {
+    margin: 0;
+    padding: 0px 10px;
+}
+
+@media only screen and (max-width: 760px) {
+    #find-container {
+        grid-template-columns: auto auto auto;
+    }
+    #find-container>div {
+        width: 28vw;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    #find-container {
+        grid-template-columns: auto;
+    }
+    #find-container>div {
+        width: 90vw;
+    }
+    .search-container>button {
+        margin-top: 10px;
+    }
 }
