@@ -3,6 +3,8 @@ body {
     width: 100%;
     height: 100%;
     color: var(--text);
+    overflow-x: hidden;
+    overflow-y:initial;
 }
 
 header {
@@ -80,6 +82,55 @@ main {
     margin: 0;
     padding: 0px 10px;
 }
+
+#film-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--the);
+}
+
+.film-slide {
+    display: block !important;
+    animation: slide .5s ease !important;
+}
+
+@keyframes slide {
+    0% {
+        left: 100vw;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+#film-container>i {
+    position: absolute;
+    cursor: pointer;
+    padding: 40px 40px;
+    font-size: 2rem;
+    left: 0;
+}
+
+#film-container>#film-banner {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#film-container>#film-banner>img {
+    width: 100vw;
+    opacity: 0.7;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.765)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
 
 @media only screen and (max-width: 760px) {
     #find-container {
