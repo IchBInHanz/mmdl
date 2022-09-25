@@ -4,9 +4,27 @@ finds = document.getElementById('find-container')
 film = document.getElementById('film-container')
 
 
+const searchParams = new URLSearchParams(window.location.search);
+
+if (searchParams.has('query')) {
+    search(searchParams.get('query'))
+}
+
 document.getElementById('search-submit').addEventListener('click', function(e) {
-    document.getElementById('search-container').style.paddingTop = '2vh'
     query = document.getElementById('search-input').value
+    search(query)
+})
+
+document.getElementById('search-input').addEventListener('keydown', function(e) {
+    if (e.code == 'Enter') {
+        search(e.target.value)
+    }
+})
+
+
+function search(query) {
+    window.history.pushState("object or string", "Title", `?query=${query}`);
+    document.getElementById('search-container').style.paddingTop = '2vh'
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`)
     .then((response) => response.json())
     .then((data) => {
@@ -26,15 +44,21 @@ document.getElementById('search-submit').addEventListener('click', function(e) {
             });
         }
     });
-})
+}
 
 function find(id) {
     film.classList.add('film-slide')
     document.getElementsByTagName('body')[0].style.overflowY = 'hidden'
+    // document.getElementById('film-banner-img').src = ``
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
-        document.getElementById('film-banner-img').src = `https://www.themoviedb.org/t/p/original${data.backdrop_path}`
+        console.log(data)
+        // document.getElementById('film-banner-img').src = `https://www.themoviedb.org/t/p/original${data.backdrop_path}`
+        document.getElementById('film-image-img').src = `https://www.themoviedb.org/t/p/original${data.poster_path}`
+        document.getElementById('film-title-text').textContent = data.original_title
+        document.getElementById('film-date-text').textContent = data.release_date.split('-')[0]
+        document.getElementById('film-description-text').textContent = data.overview
     })
 }
 

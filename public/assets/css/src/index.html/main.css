@@ -126,9 +126,77 @@ main {
 
 #film-container>#film-banner>img {
     width: 100vw;
+    height: 50vh;
     opacity: 0.7;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.765)), to(rgba(0,0,0,0)));
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+.film-infos {
+    display: grid;
+    grid-template-areas:
+    'film-image film-title'
+    'film-image film-date'
+    'film-image film-description'
+    'film-image film-action';
+    padding: 20vh 20vw;
+    text-align: left;
+}
+
+.film-image {
+    max-width: max-content;
+    grid-area: film-image;
+}
+
+.film-image>img {
+    width: 80%;
+    border-radius: 5px;
+}
+
+.film-title {
+    width: 20vw;
+    font-size: 4rem;
+    grid-area: film-title;
+    margin: 0;
+}
+.film-title>h3 {
+    margin: 0;
+}
+
+.film-date {
+    grid-area: film-date;
+}
+
+.film-date>span {
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+.film-description {
+    font-size: 1.6rem;
+    grid-area: film-description;
+}
+
+.film-description>p {
+    margin: 0;
+}
+
+.film-action {
+    grid-area: film-action
+}
+
+.film-action>button {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 16px 4rem;
+    border-radius: 14px;
+    background-color: #e0e0e0;
+    border: none;
+}
+
+.film-action>button:hover {
+    transition: .2s;
+    background-color: #bfbfbf;
 }
 
 

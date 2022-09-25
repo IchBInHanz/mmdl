@@ -16,13 +16,10 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
     socket.on('findTorrent', (data) => {
       console.log(data)
+      findTorrent.findTorrent(data)
     })
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
 });
 
 server.listen(80, () => {
