@@ -96,9 +96,18 @@ socket.on('searchResults', (data) => {
             <span>Seeds: ${data[rs].seeds}</span>
             <span>Peers: ${data[rs].peers}</span>
             <span>Size: ${data[rs].size}</span>
-            <a target="_blank" href="${data[rs].magnet}">Download</a>
+            <button onclick=dl("${data[rs].magnet}")>Download</button>
             `
         }
     })
     console.log(data)
+})
+
+function dl(magnetUrl) {
+    socket.emit('dlTorrent', magnetUrl)
+}
+
+        socket.emit('dlTorrentSuccess')
+socket.on('dlTorrentSuccess', () => {
+    alert('dlTorrentSuccess')
 })
