@@ -5,7 +5,6 @@ const TorrentSearchApi = require('torrent-search-api');
 
 
 async function findTorrent(socket, data) {
-    console.log('start searching torrent for: ' + data.query)
     TorrentSearchApi.enableProvider('ThePirateBay');
     const torrents = await TorrentSearchApi.search(data.query, '', 20);
     avt = {
@@ -31,7 +30,6 @@ async function findTorrent(socket, data) {
         "1080": avt["1080"][0],
         "720": avt["720"][0]
     }
-    console.log(avt)
     socket.emit('searchResults', avt)
     return
 }
