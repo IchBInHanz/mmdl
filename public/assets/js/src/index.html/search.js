@@ -100,14 +100,11 @@ socket.on('searchResults', (data) => {
             `
         }
     })
-    console.log(data)
 })
 
 function dl(magnetUrl) {
     socket.emit('dlTorrent', magnetUrl)
 }
-
-        socket.emit('dlTorrentSuccess')
 socket.on('dlTorrentSuccess', () => {
-    alert('dlTorrentSuccess')
+    alert('Download Finished!')
 })
