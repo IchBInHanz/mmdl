@@ -6,8 +6,6 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 const findTorrent = require('./app/findTorrent');
-findTorrent.findTorrent()
-
 
 app.use(express.static(__dirname + '/public'));
 
@@ -17,8 +15,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     socket.on('findTorrent', (data) => {
-      console.log(data)
-      findTorrent.findTorrent(data)
+      findTorrent.findTorrent(socket, data)
     })
 });
 

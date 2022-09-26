@@ -47,7 +47,14 @@ function search(query) {
 }
 
 function find(id) {
+    window.scrollTo(0, 0);
     film.classList.add('film-slide')
+    document.getElementById('film-results').innerHTML = `
+    <div id="film-result-4k"></div>
+    <div id="film-result-2k"></div>
+    <div id="film-result-1080"></div>
+    <div id="film-result-720"></div>`
+    document.getElementById('film-action-search').style.display = 'block'
     document.getElementsByTagName('body')[0].style.overflowY = 'hidden'
     // document.getElementById('film-banner-img').src = ``
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
@@ -65,4 +72,33 @@ function find(id) {
 document.getElementById('film-close').addEventListener('click', () => {
     document.getElementsByTagName('body')[0].style.overflowY = 'initial'
     film.classList.remove('film-slide')
+})
+
+document.getElementById('film-action-search').addEventListener('click', () => {
+    socket.emit('findTorrent', {query: document.getElementById('film-title-text').textContent})
+})
+
+res = [
+    "4k",
+    "2k",
+    "1080",
+    "720"
+]
+
+socket.on('searchResults', (data) => {
+    document.getElementById('film-action-search').style.display = 'none'
+    res.forEach(rs => {
+        if (!data[rs]) {
+            document.getElementById(`film-result-${rs}`).innerHTML += `${rs}: Unavailable.`
+        } else {
+            document.getElementById(`film-result-${rs}`).innerHTML += `
+            <span>${rs}: </span>
+            <span>Seeds: ${data[rs].seeds}</span>
+            <span>Peers: ${data[rs].peers}</span>
+            <span>Size: ${data[rs].size}</span>
+            <a target="_blank" href="${data[rs].magnet}">Download</a>
+            `
+        }
+    })
+    console.log(data)
 })
