@@ -49,11 +49,15 @@ function search(query) {
 function find(id) {
     window.scrollTo(0, 0);
     film.classList.add('film-slide')
+    document.getElementById('film-results').style.display = 'none';
     document.getElementById('film-results').innerHTML = `
-    <div id="film-result-4k"></div>
-    <div id="film-result-2k"></div>
-    <div id="film-result-1080"></div>
-    <div id="film-result-720"></div>`
+    <tr>
+        <th>Resolution</th>
+        <th>Seeds</th>
+        <th>Peers</th>
+        <th>Size</th>
+        <th></th>
+    </tr>`
     document.getElementById('film-action-search').style.display = 'block'
     document.getElementsByTagName('body')[0].style.overflowY = 'hidden'
     // document.getElementById('film-banner-img').src = ``
@@ -87,24 +91,40 @@ res = [
 
 socket.on('searchResults', (data) => {
     document.getElementById('film-action-search').style.display = 'none'
+    document.getElementById('film-results').style.display = 'block';
+    i=0
     res.forEach(rs => {
         if (!data[rs]) {
-            document.getElementById(`film-result-${rs}`).innerHTML += `${rs}: Unavailable.`
-        } else {
-            document.getElementById(`film-result-${rs}`).innerHTML += `
-            <span>${rs}: </span>
-            <span>Seeds: ${data[rs].seeds}</span>
-            <span>Peers: ${data[rs].peers}</span>
-            <span>Size: ${data[rs].size}</span>
-            <button onclick=dl("${data[rs].magnet}")>Download</button>
+            document.getElementById(`film-results`).innerHTML += `
+            <tr>
+                <th>${rs}</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+                <th></th>
+            </tr>
             `
+        } else {
+            document.getElementById(`film-results`).innerHTML += `
+            <tr>
+                <th>${rs}</th>
+                <th>${data[rs].seeds}</th>
+                <th>${data[rs].peers}</th>
+                <th>${data[rs].size}</th>
+                <th><button class="film-result-dl-btn-${i}" onclick=dl(${i},'${data[rs].magnet}')>Download</button></th>
+            </tr>
+            `
+            i++
         }
     })
 })
 
-function dl(magnetUrl) {
+function dl(id, magnetUrl) {
+    document.getElementsByClassName(`film-result-dl-btn-${id}`)[0].disabled = true;
+    document.getElementsByClassName(`film-result-dl-btn-${id}`)[0].textContent = '...'
     socket.emit('dlTorrent', magnetUrl)
+    socket.on('dlTorrentSuccess', () => {
+        document.getElementsByClassName(`film-result-dl-btn-${id}`)[0].textContent = 'Download Finished!'
+        alert('Download Finished!')
+    })
 }
-socket.on('dlTorrentSuccess', () => {
-    alert('Download Finished!')
-})
