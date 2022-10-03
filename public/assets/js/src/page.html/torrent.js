@@ -49,7 +49,8 @@ document.getElementById('search-btn').addEventListener('click', (e) => {
     searchTorrent(contentData.name)
 })
 
-function download(magnet) {
+async function download(magnet) {
+    await Notification.requestPermission();
     document.getElementById(`results`).style.display = 'none'
     document.getElementById('poster').classList.remove('tiny-img')
     document.getElementById('download-status').style.display = 'initial'
@@ -65,9 +66,4 @@ function download(magnet) {
         })
         document.getElementById('download-status').textContent = 'Download Finished!'
     })
-}
-
-reqNotif()
-async function reqNotif() {
-    await Notification.requestPermission();
 }
