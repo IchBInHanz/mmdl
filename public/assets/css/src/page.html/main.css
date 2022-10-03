@@ -6,8 +6,14 @@ main {
 }
 
 main>img {
-    width: 70%;
+    transition: .2s;
+    width: 62%;
     border-radius: 10px;
+}
+
+.tiny-img {
+    transition: .2s;
+    width: 40%;
 }
 
 main>h2 {
@@ -15,7 +21,18 @@ main>h2 {
     margin: 14px;
 }
 
+#tv-select {
+    display: none;
+    padding: 2vh 2vw;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    background-color: var(--sec);
+}
+
 main>button {
+    margin-top: 4px;
     padding: 12px 14px;
     font-size: 1.3rem;
     border-radius: 10px;
@@ -24,4 +41,30 @@ main>button {
     background-color: var(--sec);
     cursor: pointer;
     width: 40vw;
+}
+
+main>table {
+    padding: 3vw 8vw;
+    width: 100%;
+    text-align: center;
+}
+
+main>table>tbody {
+    display: none;
+    color: white;
+}
+
+main>table>tbody>tr>th>button {
+    font-size: 1rem;
+    padding: 1vw 2vh;
+    border-radius: 6px;
+    border: 2px solid var(--the);
+    background-color: var(--sec);
+    color: white;
+}
+
+
+#download-status {
+    display: none;
+    color: white;
 }

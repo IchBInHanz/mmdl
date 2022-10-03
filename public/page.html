@@ -15,6 +15,7 @@
     <!-- JS -->
     <script src="./assets/js/utils/global.js"></script>
     <script defer src="./assets/js/src/page.html/back.js"></script>
+    <script defer src="./assets/js/src/page.html/content.js"></script>
     <script defer src="./assets/js/src/page.html/torrent.js"></script>
 </head>
 <body>
@@ -26,7 +27,21 @@
     <main>
         <img id="poster">
         <h2 id="title"></h2>
-        <button>Search</button>
+        <select id="tv-select"></select>
+        <br>
+        <button id="search-btn">Search</button>
+        <table>
+            <tbody id="results">
+                <tr>
+                    <th>RES</th>
+                    <th>SEEDS</th>
+                    <th>PEERS</th>
+                    <th>SIZE</th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="download-status">Downloading ...</h2>
     </main>
 </body>
 </html>

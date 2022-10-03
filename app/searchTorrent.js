@@ -1,13 +1,9 @@
-// const puppeteer = require('puppeteer');
 const TorrentSearchApi = require('torrent-search-api');
 
-
-
-
-async function findTorrent(socket, data) {
+async function searchTorrent(socket, data) {
     TorrentSearchApi.enableProvider('ThePirateBay');
     const torrents = await TorrentSearchApi.search(data.query, '', 20);
-    avt = {
+    results = {
         "4k": [],
         "2k": [],
         "1080": [],
@@ -15,23 +11,23 @@ async function findTorrent(socket, data) {
     }
     torrents.forEach((torrent) => {
         if (torrent.title.toLowerCase().includes('4k')) {
-            avt["4k"].push(torrent)
+            results["4k"].push(torrent)
         } else if (torrent.title.toLowerCase().includes('2k')) {
-            avt["2k"].push(torrent)
+            results["2k"].push(torrent)
         } else if (torrent.title.toLowerCase().includes('1080')) {
-            avt["1080"].push(torrent)
+            results["1080"].push(torrent)
         } else if (torrent.title.toLowerCase().includes('720')) {
-            avt["720"].push(torrent)
+            results["720"].push(torrent)
         }
     })
-    avt = {
-        "4k": avt["4k"][0],
-        "2k": avt["2k"][0],
-        "1080": avt["1080"][0],
-        "720": avt["720"][0]
+    results = {
+        "4k": results["4k"][0],
+        "2k": results["2k"][0],
+        "1080": results["1080"][0],
+        "720": results["720"][0]
     }
-    socket.emit('searchResults', avt)
+    socket.emit('searchTorrentResults', results)
     return
 }
 
-exports.findTorrent = findTorrent
+exports.searchTorrent = searchTorrent
