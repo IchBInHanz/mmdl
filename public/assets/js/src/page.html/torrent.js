@@ -53,7 +53,7 @@ function download(magnet) {
     document.getElementById(`results`).style.display = 'none'
     document.getElementById('poster').classList.remove('tiny-img')
     document.getElementById('download-status').style.display = 'initial'
-    socket.emit('downloadTorrent', {magnet: magnet, media_type: contentData.media_type})
+    socket.emit('downloadTorrent', {magnet: magnet, media_type: searchParams.get('media_type')})
     socket.on('downloadTorrentSuccess', (data) => {
         document.getElementById('download-status').textContent = 'Download Finished!'
     })
