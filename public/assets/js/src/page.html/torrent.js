@@ -55,6 +55,19 @@ function download(magnet) {
     document.getElementById('download-status').style.display = 'initial'
     socket.emit('downloadTorrent', {magnet: magnet, media_type: searchParams.get('media_type')})
     socket.on('downloadTorrentSuccess', (data) => {
+        if (searchParams.get('media_type') == 'tv') {
+            query = document.getElementById('title').textContent + ` ${document.getElementById('tv-select').value}`
+        }
+        new Notification('Download Finished', {
+            body: query,
+            icon: 'http://mmdl.nilssimons.me/assets/img/mmdl-logo-nobg.png',
+            image: document.getElementById('poster').src
+        })
         document.getElementById('download-status').textContent = 'Download Finished!'
     })
+}
+
+reqNotif()
+async function reqNotif() {
+    await Notification.requestPermission();
 }
