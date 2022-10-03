@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="./assets/css/src/page.html/main.css">
 
     <!-- JS -->
+    <script src="./assets/js/utils/global.js"></script>
     <script defer src="./assets/js/src/page.html/back.js"></script>
+    <script defer src="./assets/js/src/page.html/torrent.js"></script>
 </head>
 <body>
     <header>
@@ -22,9 +24,20 @@
         </a>
     </header>
     <main>
-        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg">
-        <h2>Game of Thrones</h2>
+        <img id="poster">
+        <h2 id="title"></h2>
         <button>Search</button>
     </main>
 </body>
 </html>
+
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>
