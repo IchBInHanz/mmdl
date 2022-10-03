@@ -1,57 +1,23 @@
-body {
-    background-color: var(--bg);
-    width: 100%;
-    height: 100%;
-    color: var(--text);
-    overflow-x: hidden;
-    overflow-y: initial;
-}
-
-header {
-    width: 100%;
+#search-results {
+    display: grid;
+    grid-row-gap: 20px;
     text-align: center;
+    padding: 10vw;
 }
 
-header>a {
+#search-results>a {
+    width: 80vw;
     text-decoration: none;
-    color: var(--text);
-    cursor: pointer;
-}
-
-main {
-    text-align: center;
-    width: 100%;
-}
-
-.search-container {
-    width: 100%;
-    padding-top: 20vh;
-}
-
-.search-container>input[type="text"] {
-    padding: 20px 26px;
-    background-color: var(--sec);
-    border: 2px solid var(--the);
-    border-radius: 6px;
+    color: white;
+    border-radius: 20px;
+    border: 3px solid var(--the);
     font-size: 1.6rem;
-    color: var(--text);
-    outline: none;
-    width: auto;
 }
 
-.search-container>button {
-    padding: 20px 26px;
-    background-color: var(--sec);
-    border: 2px solid var(--the);
-    border-radius: 6px;
-    font-size: 1.6rem;
-    color: var(--text);
-    outline: none;
-    cursor: pointer;
-    width: auto;
+#search-results>a>img {
+    border-radius: 16px;
 }
 
-.search-container>button:hover {
-    transition: .2s;
-    background-color: var(--the);
+#search-results>a>h5 {
+    margin: 20px;
 }

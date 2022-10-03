@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/utils/golbal.css">
     <link rel="stylesheet" href="./assets/css/src/index.html/main.css">
+    <link rel="stylesheet" href="./assets/css/src/index.html/header.css">
 
     
     <!-- JS -->
     <script src="./assets/js/utils/global.js"></script>
+    <script defer src="./assets/js/src/index.html/search.js"></script>
 
 </head>
 <body>
@@ -23,16 +25,19 @@
       <a href="./">
         <h1>MMDL</h1>
       </a>
-    </header>
-    <main>
       <div class="search-container" id="search-container">
         <input id="search-input" type="text" placeholder="The Hobbit, Harry Potter, ...">
-        <button><i class="fa-solid fa-gear"></i></button>
+        <!-- <button><i class="fa-solid fa-gear"></i></button> -->
         <button id="search-submit">Search</button>
       </div>
+    </header>
+    <main>
+      <div id="search-results"></div>
     </main>
 </body>
 </html>
+
+
 
 <script>
   if ('serviceWorker' in navigator) {

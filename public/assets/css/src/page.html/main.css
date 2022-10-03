@@ -1,0 +1,27 @@
+main {
+    top: 14vh;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+main>img {
+    width: 70%;
+    border-radius: 10px;
+}
+
+main>h2 {
+    color: white;
+    margin: 0;
+}
+
+main>button {
+    padding: 12px 14px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: var(--sec);
+    cursor: pointer;
+    width: 40vw;
+}

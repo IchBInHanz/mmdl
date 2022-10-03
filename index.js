@@ -13,6 +13,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
+app.get('/p', (req, res) => {
+  res.sendFile(__dirname + '/public/page.html');
+});
 
 io.on('connection', (socket) => {
     socket.on('findTorrent', (data) => {
