@@ -10,7 +10,7 @@ function search(query, options) {
             if (p.poster_path !== null) {
                 document.getElementById('search-results').innerHTML += `
                 <a href="./p?id=${p.id}&from_query=${query}">
-                    <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2${p.poster_path}" alt="Page Poster">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${p.poster_path}" alt="Page Poster">
                     <h5>${pName}</h5>
                 </a>`
             }
