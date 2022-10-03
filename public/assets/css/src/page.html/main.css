@@ -1,5 +1,5 @@
 main {
-    top: 14vh;
+    top: 4vh;
     position: relative;
     width: 100%;
     text-align: center;
@@ -12,7 +12,7 @@ main>img {
 
 main>h2 {
     color: white;
-    margin: 0;
+    margin: 14px;
 }
 
 main>button {
