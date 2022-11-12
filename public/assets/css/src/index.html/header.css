@@ -12,7 +12,18 @@ header {
     text-align: center;
 }
 
-header>a {
+header>a:not(.title) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    font-size: 1.6rem;
+    color: var(--text);
+    text-decoration: none;
+    padding: 20px 20px;
+}
+
+.title {
     text-decoration: none;
     color: var(--text);
     cursor: pointer;

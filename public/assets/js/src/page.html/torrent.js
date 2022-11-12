@@ -54,7 +54,14 @@ async function download(magnet) {
     document.getElementById(`results`).style.display = 'none'
     document.getElementById('poster').classList.remove('tiny-img')
     document.getElementById('download-status').style.display = 'initial'
-    socket.emit('downloadTorrent', {magnet: magnet, media_type: searchParams.get('media_type')})
+
+    if (searchParams.get('media_type') == 'tv') {
+        nName = contentData.name + ` ${document.getElementById('tv-select').value}`
+    } else {
+        nName = contentData.name
+    }
+
+    socket.emit('downloadTorrent', {magnet: magnet, media_type: searchParams.get('media_type'), name: nName})
     socket.on('downloadTorrentSuccess', (data) => {
         if (searchParams.get('media_type') == 'tv') {
             query = document.getElementById('title').textContent + ` ${document.getElementById('tv-select').value}`

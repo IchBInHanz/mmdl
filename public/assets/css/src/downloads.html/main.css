@@ -1,0 +1,19 @@
+main {
+    width: 100%;
+    height: 87vh;
+    background-color: var(--sec);
+    color: var(--text);
+}
+
+main>h1 {
+    margin: 0;
+}
+
+main>table {
+    width: 100vw;
+    border: 1px solid var(--text);
+}
+
+#downloads td, #downloads th {
+    border: 1px solid var(--text);
+}

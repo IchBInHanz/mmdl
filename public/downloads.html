@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMDL - Downloads</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/utils/golbal.css">
+    <link rel="stylesheet" href="./assets/css/src/downloads.html/header.css">
+    <link rel="stylesheet" href="./assets/css/src/downloads.html/main.css">
+
+    
+    <!-- JS -->
+    <script src="./assets/js/utils/global.js"></script>
+    <script defer src="./assets/js/src/downloads.html/get.js"></script>
+</head>
+<body>
+    <header>
+        <a href="./">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <h1>Downloads</h1>
+        <a class="refresh" href="./downloads">
+            <i class="fa-solid fa-rotate-right"></i>
+        </a>
+    </header>
+    <main>
+        <table id="downloads"></table>
+    </main>
+</body>
+</html>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>

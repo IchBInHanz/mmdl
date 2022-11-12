@@ -23,6 +23,7 @@
     "npm": "^8.19.2",
     "puppeteer": "^18.0.5",
     "socket.io": "^4.5.2",
-    "torrent-search-api": "^2.1.4"
+    "torrent-search-api": "^2.1.4",
+    "uuid": "^9.0.0"
   }
 }

@@ -1,3 +1,5 @@
+const PORT = 0361
+
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -7,6 +9,7 @@ const io = new Server(server);
 
 const searchTorrent = require('./app/searchTorrent');
 const downloadTorrent = require('./app/downloadTorrent');
+const getDownloads = require('./app/getDownloads');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -17,6 +20,10 @@ app.get('/p', (req, res) => {
   res.sendFile(__dirname + '/public/page.html');
 });
 
+app.get('/downloads', (req, res) => {
+  res.sendFile(__dirname + '/public/downloads.html');
+});
+
 io.on('connection', (socket) => {
     socket.on('searchTorrent', (data) => {
       searchTorrent.searchTorrent(socket, data)
@@ -24,8 +31,11 @@ io.on('connection', (socket) => {
     socket.on('downloadTorrent', (data) => {
       downloadTorrent.downloadTorrent(socket, data)
     })
+    socket.on('getDownloads', () => {
+      getDownloads.getDownloads(socket)
+    })
 });
 
-server.listen(80, () => {
-  console.log('listening on *:80');
+server.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
