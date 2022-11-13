@@ -5,7 +5,7 @@ MOVIES_DL_PATH = "L:\MOVIES"
 SERIES_DL_PATH = "L:\SERIES"
 
 
-MOVIES_DL_PATH = './'
+// MOVIES_DL_PATH = './'
 
 async function downloadTorrent(socket, data) {
     DL_PATH = MOVIES_DL_PATH
@@ -26,7 +26,7 @@ async function downloadTorrent(socket, data) {
     fs.writeFileSync('./data/downloads.json', downloadsData);
 
     console.log(data)
-    exec(`webtorrent download "${data.magnet}" -o "${DL_PATH}"`, (error, stdout, stderr) => {
+    exec(`webtorrent download "${data.torrentData.magnet}" -o "${DL_PATH}"`, (error, stdout, stderr) => {
         if (error) {
             socket.emit('downloadTorrentErorr', error.message)
             updateStatus(uuid, 'error')

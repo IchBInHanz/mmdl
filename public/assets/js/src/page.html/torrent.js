@@ -5,6 +5,13 @@ res = [
     "720"
 ]
 
+let searchRes = {
+    "4k": {},
+    "2k": {},
+    "1080": {},
+    "720": {},
+}
+
 function searchTorrent(query) {
     if (searchParams.get('media_type') == 'tv') {
         query = query + ` ${document.getElementById('tv-select').value}`
@@ -27,19 +34,21 @@ function searchTorrent(query) {
                 </tr>
                 `
             } else {
+                searchRes[rs] = data[rs]
                 document.getElementById(`results`).innerHTML += `
                 <tr>
                     <th>${rs}</th>
                     <th>${data[rs].seeds}</th>
                     <th>${data[rs].peers}</th>
                     <th>${data[rs].size}</th>
-                    <th><button onclick=download('${data[rs].magnet}')>Download</button></th>
+                    <th><button onclick=download('${rs}')>Download</button></th>
                 </tr>
                 `
                 // <th><button onclick=dl(${i},'${data[rs].magnet}')>Download</button></th>
                 i++
             }
         })
+        console.log(searchRes)
     })
 }
 
@@ -49,7 +58,8 @@ document.getElementById('search-btn').addEventListener('click', (e) => {
     searchTorrent(contentData.name)
 })
 
-async function download(magnet) {
+async function download(res) {
+    console.log(searchRes[res])
     await Notification.requestPermission();
     document.getElementById(`results`).style.display = 'none'
     document.getElementById('poster').classList.remove('tiny-img')
@@ -61,7 +71,7 @@ async function download(magnet) {
         nName = contentData.name
     }
 
-    socket.emit('downloadTorrent', {magnet: magnet, media_type: searchParams.get('media_type'), name: nName})
+    socket.emit('downloadTorrent', {torrentData: searchRes[res], media_type: searchParams.get('media_type'), name: nName})
     socket.on('downloadTorrentSuccess', (data) => {
         if (searchParams.get('media_type') == 'tv') {
             query = document.getElementById('title').textContent + ` ${document.getElementById('tv-select').value}`
