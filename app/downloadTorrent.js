@@ -20,12 +20,16 @@ async function downloadTorrent(socket, data) {
         "uuid": uuid,
         "title": data.name,
         "start_time": new Date(),
-        "status": "active"
+        "status": "active",
+        "file_data": {
+            "file_size": data.torrentData.size,
+            "seeds": data.torrentData.seeds
+        }
     }
     var downloadsData = JSON.stringify(downloads);
     fs.writeFileSync('./data/downloads.json', downloadsData);
 
-    console.log(data)
+    // console.log(data)
     exec(`webtorrent download "${data.torrentData.magnet}" -o "${DL_PATH}"`, (error, stdout, stderr) => {
         if (error) {
             socket.emit('downloadTorrentErorr', error.message)

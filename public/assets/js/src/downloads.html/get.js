@@ -8,7 +8,8 @@ socket.on('downloadsResults', (results) => {
         document.getElementById('downloads').innerHTML += `
         <tr>
             <td>${value.title}</td>
-            <td>-</td>
+            <td>${value.file_data.file_size}</td>
+            <td>${value.file_data.seeds}</td>
             <td>${value.status}</td>
         </tr>
         `
