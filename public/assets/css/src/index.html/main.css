@@ -22,3 +22,19 @@
 #search-results>a>h5 {
     margin: 20px;
 }
+
+
+@media only screen and (min-width: 1000px) {
+	#search-results {
+		grid-template-columns: auto auto auto;
+		grid-column-gap: 20px;
+	}
+	#search-results>a {
+		padding: 20px;
+		width: auto;
+	}
+    #search-results>a>img {
+		width: 40%;
+		border-radius: 16px;
+	}
+}
