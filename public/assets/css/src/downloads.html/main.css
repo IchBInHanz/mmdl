@@ -1,6 +1,7 @@
 main {
     width: 100%;
-    height: 87vh;
+    /* height: 87vh; */
+	/* min-height: 87vh; */
     background-color: var(--sec);
     color: var(--text);
 }
