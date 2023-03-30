@@ -30,20 +30,20 @@ async function downloadTorrent(socket, data) {
     fs.writeFileSync('./data/downloads.json', downloadsData);
 
     // console.log(data)
-    exec(`webtorrent download "${data.torrentData.magnet}" -o "${DL_PATH}"`, (error, stdout, stderr) => {
+    exec(`webtorrent download "${data.torrentData.magnet}" -o "${DL_PATH}"`, async (error, stdout, stderr) => {
         if (error) {
             socket.emit('downloadTorrentErorr', error.message)
-            updateStatus(uuid, 'error')
+            await updateStatus(uuid, 'error')
             return;
         }
         if (stderr) {
             socket.emit('downloadTorrentErorr', stderr)
-            updateStatus(uuid, 'error')
+            await updateStatus(uuid, 'error')
             return;
         }
-        console.log(`Download finished ${data.name}`)
-        updateStatus(uuid, 'finished')
         socket.emit('downloadTorrentSuccess')
+        await updateStatus(uuid, 'finished')
+        console.log(`Download finished ${data.name}`)
     })
 }
 
