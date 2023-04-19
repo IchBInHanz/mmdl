@@ -16,6 +16,8 @@ main {
     grid-template-columns: auto auto;
     grid-gap: 14px;
     text-align: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
 }
 
 #downloads>div {
@@ -26,6 +28,7 @@ main {
 #downloads>div>img {
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
+    
     width: 100%;
 }
 
