@@ -58,6 +58,7 @@ document.getElementById('search-btn').addEventListener('click', (e) => {
     searchTorrent(contentData.name)
 })
 
+
 async function download(res) {
     console.log(searchRes[res])
     await Notification.requestPermission();
