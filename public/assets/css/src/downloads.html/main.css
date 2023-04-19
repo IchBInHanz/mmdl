@@ -4,19 +4,56 @@ main {
 	/* min-height: 87vh; */
     background-color: var(--sec);
     color: var(--text);
+    min-height: 90vh;
+    max-height: fit-content;
 }
 
-main>h1 {
-    margin: 0;
+#downloads {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 14px;
+    text-align: center;
 }
 
-main>table {
-    width: 100vw;
-    border: 1px solid var(--text);
-    border-radius: 5px;
+#downloads>div {
+    border: 8px solid black;
+    border-radius: 12px;
 }
 
-#downloads td, #downloads th {
-    border: 1px solid var(--text);
-    border-radius: 5px;
+#downloads>div>img {
+    width: 100%;
+}
+
+#downloads>div>h5 {
+    padding: 0px 0px;
+    margin: 0px 0px;
+    padding-bottom: 6px;
+}
+
+.down-error {
+    border-color: rgba(255, 0, 0, 0.678) !important;
+}
+
+.down-finished {
+    border-color: rgba(0, 255, 0, 0.459) !important;
+}
+
+.down-active {
+    animation: blink 1.2s infinite linear;
+}
+
+@keyframes blink {
+    0% {
+        border-color: var(--sec);
+    }
+    50% {
+        border-color: rgba(92, 220, 255, 0.797);
+    }
+    100% {
+        border-color: var(--sec);
+    }
+    
 }

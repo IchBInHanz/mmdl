@@ -72,7 +72,7 @@ async function download(res) {
         nName = contentData.name
     }
 
-    socket.emit('downloadTorrent', {torrentData: searchRes[res], media_type: searchParams.get('media_type'), name: nName, media_id: searchParams.get('id')})
+    socket.emit('downloadTorrent', {torrentData: searchRes[res], media_type: searchParams.get('media_type'), name: nName, media_id: searchParams.get('id'), media_images: document.getElementById('poster').src})
     socket.on('downloadTorrentSuccess', (data) => {
         if (searchParams.get('media_type') == 'tv') {
             query = document.getElementById('title').textContent + ` ${document.getElementById('tv-select').value}`

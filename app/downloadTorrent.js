@@ -19,6 +19,7 @@ async function downloadTorrent(socket, data) {
     downloads[uuid] = {
         "uuid": uuid,
         "media_id": data.media_id,
+        "media_image": data.media_image,
         "title": data.name,
         "start_time": new Date(),
         "status": "active",

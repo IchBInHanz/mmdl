@@ -6,13 +6,10 @@ socket.on('downloadsResults', (results) => {
     for (const [key, value] of Object.entries(results)) {
         console.log(key, value)
         document.getElementById('downloads').innerHTML += `
-        <tr>
-            <td>${value.title}</td>
-            <td>${value.file_data.file_size}</td>
-            <td>${value.file_data.seeds}</td>
-            <td>${value.status}</td>
-        </tr>
+        <div class="down-${value.status}">
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg">
+            <h5>${value.title}</h5>
+        </div>
         `
-        console.log(`${key}: ${value}`);
     }
 })
