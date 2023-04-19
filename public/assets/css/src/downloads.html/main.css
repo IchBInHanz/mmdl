@@ -26,8 +26,8 @@ main {
 }
 
 #downloads>div>img {
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     
     width: 100%;
 }
