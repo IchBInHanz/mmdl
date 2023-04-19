@@ -1,21 +1,24 @@
 {
-    "d0d34df9-bd37-4cac-8713-b34090114be5":{
-        "uuid":"d0d34df9-bd37-4cac-8713-b34090114be5",
-        "title":"The Hobbit: The Desolation of Smaug",
-        "start_time":"2022-11-13T12:15:25.398Z",
-        "status":"error",
-        "file_data":{
-            "file_size":"2.2 GB",
+    "d0d34df9-bd37-4cac-8713-b34090114be5": {
+        "uuid": "d0d34df9-bd37-4cac-8713-b34090114be5",
+        "title": "The Hobbit: The Desolation of Smaug",
+        "start_time": "2022-11-13T12:15:25.398Z",
+        "status": "error",
+        "file_data": {
+            "file_size": "2.2 GB",
             "seeds": 123
         },
-        "end_date":"2022-11-13T12:15:32.631Z"
+        "end_date": "2022-11-13T12:15:32.631Z"
     },
-    "fb4da74f-2c97-45ea-940f-6b9b8ad81bfd":{"uuid":"fb4da74f-2c97-45ea-940f-6b9b8ad81bfd","title":"Harry Potter and the Goblet of Fire",
-    "start_time":"2022-11-13T12:15:41.700Z","status":"error",
-    "file_data":{
-        "file_size":"2.3 GB",
-        "seeds": 70
-    },
-    "end_date":"2022-11-13T12:15:45.913Z"
+    "fb4da74f-2c97-45ea-940f-6b9b8ad81bfd": {
+        "uuid": "fb4da74f-2c97-45ea-940f-6b9b8ad81bfd",
+        "title": "Harry Potter and the Goblet of Fire",
+        "start_time": "2022-11-13T12:15:41.700Z",
+        "status": "error",
+        "file_data": {
+            "file_size": "2.3 GB",
+            "seeds": 70
+        },
+        "end_date": "2022-11-13T12:15:45.913Z"
     }
 }
