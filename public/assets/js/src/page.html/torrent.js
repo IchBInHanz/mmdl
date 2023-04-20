@@ -61,7 +61,6 @@ document.getElementById('search-btn').addEventListener('click', (e) => {
 
 async function download(res) {
     console.log(searchRes[res])
-    await Notification.requestPermission();
     document.getElementById(`results`).style.display = 'none'
     document.getElementById('poster').classList.remove('tiny-img')
     document.getElementById('download-status').style.display = 'initial'
@@ -77,11 +76,6 @@ async function download(res) {
         if (searchParams.get('media_type') == 'tv') {
             query = document.getElementById('title').textContent + ` ${document.getElementById('tv-select').value}`
         }
-        new Notification('Download Finished', {
-            body: query,
-            icon: 'http://mmdl.nilssimons.me/assets/img/mmdl-logo-nobg.png',
-            image: document.getElementById('poster').src
-        })
         document.getElementById('download-status').textContent = 'Download Finished!'
     })
 }
